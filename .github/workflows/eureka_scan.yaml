@@ -1,0 +1,17 @@
+name: Eureka DevSecOps GitHub Action Scan
+
+on:
+  push:
+    branches:
+        - '*'
+
+jobs:
+  eureka-devsecops-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3        
+      - name: Run Eureka DevSecOps GitHub Action Scan
+        uses: EurekaDevSecOps/scan-action@main
+        env:    
+          EUREKA_AGENT_TOKEN: ${{ secrets.EUREKA_AGENT_TOKEN }}
+          EUREKA_PROFILE_ID: ${{ vars.EUREKA_PROFILE_ID }}
